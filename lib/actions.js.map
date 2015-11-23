@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/actions.js"],"names":[],"mappings":";;;;;;;;;;;AAGO,IAAM,UAAU,WAAV,UAAU,GAAG,kBAHlB,YAAY,SACZ,WAAW,CAEgC,CAAA","file":"actions.js","sourcesContent":["import {createAction} from 'redux-actions'\nimport {URL_CHANGED} from './index'\n\nexport const urlChanged = createAction(URL_CHANGED)\n"]}
