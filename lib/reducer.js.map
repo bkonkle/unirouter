@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"reducer.js","sourcesContent":[]}
+{"version":3,"sources":["../src/reducer.js"],"names":[],"mappings":";;;;;;;;;;;;;;;;kBAGe,uDAHP,WAAW,EAIF,UAAC,KAAK,EAAE,MAAM,EAAK;AAChC,SAAO,EAAC,KAAK,EAAL,KAAK,EAAE,MAAM,EAAN,MAAM,EAAC,CAAA;CACvB,EACD","file":"reducer.js","sourcesContent":["import {URL_CHANGED} from '../src/index'\nimport handleActions from 'redux-actions'\n\nexport default handleActions({\n  [URL_CHANGED]: (state, action) => {\n    return {state, action}\n  },\n})\n"]}

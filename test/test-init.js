@@ -1,4 +1,4 @@
-import {getUrl, handleUnload, handlePopState} from '../src/init'
+import {getUrl, handlePopState} from '../src/init'
 import chai, {expect} from 'chai'
 import sinon from 'sinon'
 import sinonChai from 'sinon-chai'
@@ -30,55 +30,6 @@ describe('init', () => {
       const result = getUrl(true, store)
 
       expect(result).to.equal('/space/unicorn?rainbows=delivered')
-    })
-
-  })
-
-  describe('handleUnload()', () => {
-
-    const message = 'don\'t go!'
-
-    const store = {
-      getState: () => ({
-        router: {
-          preventNavigation: true, preventNavigationMessage: message,
-        },
-      }),
-    }
-
-    it('returns a message to use in the browser-standard confirmation dialog', () => {
-      const result = handleUnload(store, {})
-      expect(result).to.equal(message)
-    })
-
-    it('sets the message as the return value of the event for cross-browser compat', () => {
-      const event = {}
-      handleUnload(store, event)
-      expect(event.returnValue).to.equal(message)
-    })
-
-    it('does nothing if preventNavigation is false', () => {
-      const event = {}
-      const noPreventStore = {
-        getState: () => ({router: {preventNavigation: false}}),
-      }
-
-      const result = handleUnload(noPreventStore, event)
-
-      expect(result).to.be.empty
-      expect(event.returnValue).to.be.undefined
-    })
-
-    it('does nothing if no message is set', () => {
-      const event = {}
-      const noPreventStore = {
-        getState: () => ({router: {preventNavigation: true}}),
-      }
-
-      const result = handleUnload(noPreventStore, event)
-
-      expect(result).to.be.empty
-      expect(event.returnValue).to.be.undefined
     })
 
   })
