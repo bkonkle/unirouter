@@ -1,0 +1,39 @@
+{
+  "name": "unirouter",
+  "version": "1.0.0-alpha.1",
+  "description": "A minimal routing system built with uniloc and redux",
+  "main": "lib/unirouter.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-register",
+    "build": "babel ignore-styles.js -s -o lib/ignore-styles.js",
+    "watch": "babel ignore-styles.js -s -o lib/ignore-styles.js -w",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bkonkle/unirouter.git"
+  },
+  "author": "Brandon Konkle <brandon@konkle.us>",
+  "license": "MIT",
+  "keywords": [
+    "uniloc",
+    "redux",
+    "router",
+    "routing",
+    "universal",
+    "isomorphic"
+  ],
+  "devDependencies": {
+    "babel-cli": "^6.2.0",
+    "babel-eslint": "^4.1.5",
+    "babel-plugin-transform-class-properties": "^6.2.2",
+    "babel-plugin-transform-object-assign": "^6.1.18",
+    "babel-preset-es2015-loose": "^6.1.2",
+    "babel-preset-react": "^6.1.18",
+    "babel-register": "^6.2.0",
+    "chai": "^3.4.1",
+    "eslint": "^1.9.0",
+    "eslint-config-ecliptic": "^1.2.1",
+    "mocha": "^2.3.3"
+  }
+}
