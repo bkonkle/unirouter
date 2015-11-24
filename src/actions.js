@@ -1,6 +1,5 @@
 import {createAction} from 'redux-actions'
-import {INIT_ROUTER, URL_CHANGED} from './index'
-
-export const initRouter = createAction(INIT_ROUTER)
+import {URL_CHANGED, NAVIGATE} from './index'
 
 export const urlChanged = createAction(URL_CHANGED)
+export const navigate = createAction(NAVIGATE)

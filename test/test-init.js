@@ -1,7 +1,13 @@
-import init, {getUrl, handlePopState} from '../src/init'
 import chai, {expect} from 'chai'
+import proxyquire from 'proxyquire'
 import sinon from 'sinon'
 import sinonChai from 'sinon-chai'
+
+const configureSpy = sinon.spy()
+
+const init = proxyquire('../src/init', {
+  './router': {configureRouter: configureSpy},
+})
 
 chai.use(sinonChai)
 
@@ -20,24 +26,8 @@ describe('init', () => {
     delete global.window
   })
 
-  describe('getUrl()', () => {
-
-    it('pulls the url from window.location', () => {
-      const result = getUrl()
-
-      expect(result).to.equal('/space/unicorn?lasers=marshmallow')
-    })
-
-    it('pulls the url from the state if this is a universal app', () => {
-      const store = {
-        getState: () => ({router: {url: '/space/unicorn?rainbows=delivered'}}),
-      }
-
-      const result = getUrl(true, store)
-
-      expect(result).to.equal('/space/unicorn?rainbows=delivered')
-    })
-
+  afterEach(() => {
+    configureSpy.reset()
   })
 
   describe('handlePopState()', () => {
@@ -50,7 +40,7 @@ describe('init', () => {
         type: 'URL_CHANGED',
       }
 
-      handlePopState(store, {})
+      init.handlePopState(store)({})
 
       expect(store.dispatch).to.have.been.calledWith(expected)
     })
@@ -77,20 +67,26 @@ describe('init', () => {
       delete window.onpopstate
     })
 
-    it('dispatches an initRouter event', () => {
+    it('configures the router with the provided routes and aliases', () => {
+      init.default(store, routes, aliases)
+
+      expect(configureSpy).to.have.been.calledWith(routes, aliases)
+    })
+
+    it('dispatches an urlChanged event', () => {
       const expected = {
-        payload: {url: '/space/unicorn?lasers=marshmallow', routes, aliases},
-        type: 'INIT_ROUTER',
+        payload: {url: '/space/unicorn?lasers=marshmallow', source: 'init'},
+        type: 'URL_CHANGED',
       }
 
-      init(store, routes, aliases)
+      init.default(store, routes, aliases)
 
       expect(store.dispatch).to.have.been.calledWith(expected)
     })
 
     it('attaches an event handler to window.onpopstate', () => {
-      init(store, routes, aliases)
-      expect(window).to.have.property('onpopstate').and.equal(handlePopState)
+      init.default(store, routes, aliases)
+      expect(window).to.have.property('onpopstate').and.be.a('function')
     })
 
   })

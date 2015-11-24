@@ -1,19 +1,17 @@
-import * as actions from './actions'
+import {configureRouter} from './router'
+import {getUrl} from './utils'
+import {urlChanged} from './actions'
 
-export function getUrl(universal = false, store) {
-  if (universal) {
-    return store.getState().router.url
-  }
-  return window.location.pathname + window.location.search
-}
-
-export function handlePopState(store) {
+export const handlePopState = store => () => {
   const url = getUrl()
-  store.dispatch(actions.urlChanged({url, source: 'popState'}))
+  store.dispatch(urlChanged({url, source: 'popState'}))
 }
 
 export default function init(store, routes, aliases) {
   const url = getUrl()
-  store.dispatch(actions.initRouter({url, routes, aliases}))
-  window.onpopstate = handlePopState
+
+  configureRouter(routes, aliases)
+
+  store.dispatch(urlChanged({url, source: 'init'}))
+  window.onpopstate = handlePopState(store)
 }

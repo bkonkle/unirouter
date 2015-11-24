@@ -28,7 +28,8 @@
   },
   "dependencies": {
     "curry": "^1.2.0",
-    "redux-actions": "^0.8.0"
+    "redux-actions": "^0.8.0",
+    "uniloc": "^0.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.2.0",
@@ -43,6 +44,7 @@
     "eslint-config-ecliptic": "^1.3.0",
     "jsx-chai": "^1.1.1",
     "mocha": "^2.3.3",
+    "proxyquire": "^1.7.3",
     "sinon": "^1.17.2",
     "sinon-chai": "^2.8.0"
   }
