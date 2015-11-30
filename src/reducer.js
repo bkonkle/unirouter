@@ -1,10 +1,10 @@
 import {getUrl} from './utils'
 import {handleActions} from 'redux-actions'
 import {URL_CHANGED, NAVIGATE} from '../src/index'
-import router from '../src/router'
+import getRouter from '../src/router'
 
 export function routeState(url) {
-  return {route: router.lookup(url), url}
+  return {route: getRouter().lookup(url), url}
 }
 
 export default handleActions({

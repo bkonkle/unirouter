@@ -1,19 +1,21 @@
 import {connect} from 'react-redux'
 import * as actions from '../actions'
 import React, {PropTypes} from 'react'
-import router from '../router'
+import getRouter from '../router'
 
-class Link extends React.Component {
+export class Link extends React.Component {
 
   static propTypes = {
+    children: PropTypes.node,
     href: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    navigate: PropTypes.func.isRequired,
     options: PropTypes.object,
   }
 
   handleClick(event) {
     event.preventDefault()
-    const url = router.generate(this.props.name, this.props.options)
+    const url = getRouter().generate(this.props.name, this.props.options)
     this.props.navigate(url)
   }
 

@@ -6,4 +6,6 @@ export function configureRouter(routes, aliases) {
   router = uniloc(routes, aliases)
 }
 
-export default router
+export default function getRouter() {
+  return router
+}
