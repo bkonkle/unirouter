@@ -1,4 +1,8 @@
 {
   "presets": ["es2015-loose", "react"],
-  "plugins": ["transform-object-assign", "transform-class-properties"]
+  "plugins": [
+    "transform-object-assign",
+    "transform-class-properties",
+    "transform-object-rest-spread"
+  ]
 }

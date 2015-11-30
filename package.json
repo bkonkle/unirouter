@@ -4,10 +4,9 @@
   "description": "A minimal routing system built with uniloc and redux",
   "main": "lib/unirouter.js",
   "scripts": {
-    "test": "mocha --require babel-register",
+    "test": "mocha --require babel-register test/**/*.{js,jsx}",
     "build": "babel src -s -d lib",
-    "watch": "babel src -s -d lib -w",
-    "prepublish": "npm run build"
+    "watch": "babel src -s -d lib -w"
   },
   "repository": {
     "type": "git",
@@ -24,10 +23,12 @@
     "isomorphic"
   ],
   "peerDependencies": {
-    "react": "^0.14.3"
+    "react": "^0.14.0",
+    "redux": "^2.0.0 || ^3.0.0"
   },
   "dependencies": {
     "curry": "^1.2.0",
+    "react-redux": "^4.0.0",
     "redux-actions": "^0.8.0",
     "uniloc": "^0.2.0"
   },
@@ -36,6 +37,7 @@
     "babel-eslint": "^4.1.5",
     "babel-plugin-transform-class-properties": "^6.2.2",
     "babel-plugin-transform-object-assign": "^6.1.18",
+    "babel-plugin-transform-object-rest-spread": "^6.1.18",
     "babel-preset-es2015-loose": "^6.1.2",
     "babel-preset-react": "^6.1.18",
     "babel-register": "^6.2.0",
