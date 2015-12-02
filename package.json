@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha --require babel-register test/**/*.{js,jsx}",
     "build": "babel src -s -d lib",
-    "watch": "babel src -s -d lib -w"
+    "watch": "babel src -s -d lib -w",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
