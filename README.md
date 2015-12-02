@@ -54,7 +54,7 @@ You'll also need to call the `init()` function to set up your initial routing
 information and establish event hooks for the HTML5 history api:
 
 ```js
-import init from 'unirouter/init'
+import unirouterInit from 'unirouter/init'
 import getMyStore from '../path/to/my/store'
 
 const store = getMyStore()
@@ -69,7 +69,7 @@ const aliases = {
   'GET /': 'listContacts',
 }
 
-init(store, routes, aliases)
+unirouterInit(store, routes, aliases)
 ```
 
 This is best done in your init script on the front end, or in your render
