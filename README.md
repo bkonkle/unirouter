@@ -158,6 +158,41 @@ The payload can have the following properties:
 * [`replace`] \(*Boolean*): Whether the browser url should be updated silently
   with replaceState, which doesn't add a new history entry.
 
+### `configureRouter([routes], [aliases])`
+
+```js
+import {configureRouter} from 'unirouter/router'
+```
+
+Replaces the current singleton `uniloc` instance with a new one using the given
+routes and aliases.
+
+#### Arguments
+
+* [`routes`] \(*Object*): The [uniloc][uniloc] routes object, passed to the
+  `uniloc()` function documented [here][uniloc-api].
+
+* [`aliases`] \(*Object*): The [uniloc][uniloc] aliases object, passed to the
+  `uniloc()` function documented [here][uniloc-api].
+
+### `<Link/>`
+
+```js
+import Link from 'unirouter/components/link'
+```
+
+A React component to provide links that will initiate navigation when clicked.
+
+#### Props
+
+* `href` \(*String*): The href to use for the `<a>` element.
+
+* `name` \(*String*): The `uniloc` route name, which is passed to the
+  `generate()` function documented [here][uniloc-api].
+
+* [`options`] \(*Object*): The `uniloc` route options, which are passed to the
+  `generate()` function documented [here][uniloc-api].
+
 [downloads-image]: https://img.shields.io/npm/dm/unirouter.svg?style=flat-square
 [downloads-url]: http://npm-stat.com/charts.html?package=unirouter
 [guilherme]: https://github.com/Agamennon
