@@ -16,7 +16,7 @@ export class Link extends React.Component {
   handleClick(event) {
     event.preventDefault()
     const url = getRouter().generate(this.props.name, this.props.options)
-    this.props.navigate(url)
+    this.props.navigate({url, push: true})
   }
 
   render() {

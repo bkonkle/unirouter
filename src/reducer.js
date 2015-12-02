@@ -1,6 +1,5 @@
-import {getUrl} from './utils'
 import {handleActions} from 'redux-actions'
-import {URL_CHANGED, NAVIGATE} from '../src/index'
+import {NAVIGATE} from '../src/index'
 import getRouter from '../src/router'
 
 export function routeState(url) {
@@ -8,19 +7,13 @@ export function routeState(url) {
 }
 
 export default handleActions({
-  [URL_CHANGED]: (state, action) => {
-    return Object.assign({}, state, routeState(action.payload.url))
-  },
   [NAVIGATE]: (state, action) => {
-    if (getUrl() !== action.payload.url) {
-      if (action.payload.silent) {
-        history.replaceState({}, null, action.payload.url)
-      } else {
-        history.pushState({}, null, action.payload.url)
-      }
-
-      return Object.assign({}, state, routeState(action.payload.url))
+    if (action.payload.push) {
+      history.pushState({}, null, action.payload.url)
+    } else if (action.payload.replace) {
+      history.replaceState({}, null, action.payload.url)
     }
-    return state
+
+    return Object.assign({}, state, routeState(action.payload.url))
   },
 })

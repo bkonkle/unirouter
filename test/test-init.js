@@ -34,10 +34,14 @@ describe('init', () => {
     const state = {router: {}}
     const store = {dispatch: sinon.spy(), getState: () => state}
 
-    it('dispatches a URL_CHANGED event', () => {
+    it('dispatches a navigate event', () => {
       const expected = {
-        payload: {source: 'popState', url: '/space/unicorn?lasers=marshmallow'},
-        type: 'URL_CHANGED',
+        payload: {
+          url: '/space/unicorn?lasers=marshmallow',
+          source: 'popState',
+          push: true,
+        },
+        type: 'NAVIGATE',
       }
 
       init.handlePopState(store)({})
@@ -73,10 +77,14 @@ describe('init', () => {
       expect(configureSpy).to.have.been.calledWith(routes, aliases)
     })
 
-    it('dispatches an urlChanged event', () => {
+    it('dispatches a navigate event', () => {
       const expected = {
-        payload: {url: '/space/unicorn?lasers=marshmallow', source: 'init'},
-        type: 'URL_CHANGED',
+        payload: {
+          url: '/space/unicorn?lasers=marshmallow',
+          source: 'init',
+          push: true,
+        },
+        type: 'NAVIGATE',
       }
 
       init.default(store, routes, aliases)

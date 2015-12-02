@@ -39,22 +39,6 @@ describe('reducer', () => {
 
   })
 
-  describe('URL_CHANGED', () => {
-
-    it('handles url changed events', () => {
-      const action = actions.urlChanged({
-        url: '/my/awesome/url?awesome=true',
-        source: 'test',
-      })
-      const expected = routeState('/my/awesome/url?awesome=true')
-
-      const result = reducer({}, action)
-
-      expect(result).to.deep.equal(expected)
-    })
-
-  })
-
   describe('NAVIGATE', () => {
 
     before(() => {
@@ -74,7 +58,10 @@ describe('reducer', () => {
     })
 
     it('handles navigate events', () => {
-      const action = actions.navigate({url: '/my/awesome/url?awesome=true'})
+      const action = actions.navigate({
+        url: '/my/awesome/url?awesome=true',
+        source: 'test',
+      })
       const expected = routeState('/my/awesome/url?awesome=true')
 
       const result = reducer({}, action)
@@ -82,8 +69,12 @@ describe('reducer', () => {
       expect(result).to.deep.equal(expected)
     })
 
-    it('creates a new history entry with pushState', () => {
-      const action = actions.navigate({url: '/into/the/tardis'})
+    it('creates a new history entry with pushState if push is true', () => {
+      const action = actions.navigate({
+        url: '/into/the/tardis',
+        source: 'test',
+        push: true,
+      })
 
       reducer({}, action)
 
@@ -91,8 +82,12 @@ describe('reducer', () => {
       expect(global.history.replaceState).to.not.have.been.called
     })
 
-    it('uses replaceState if silent is true', () => {
-      const action = actions.navigate({url: '/into/the/tardis', silent: true})
+    it('uses replaceState if replace is true', () => {
+      const action = actions.navigate({
+        url: '/into/the/tardis',
+        source: 'test',
+        replace: true,
+      })
 
       reducer({}, action)
 

@@ -50,7 +50,7 @@ describe('<Link/>', () => {
       Link.prototype.handleClick.call(context, event)
 
       expect(event.preventDefault).to.have.been.called
-      expect(context.props.navigate).to.have.been.calledWith('/sonic/screwdriver')
+      expect(context.props.navigate).to.have.been.calledWith({url: '/sonic/screwdriver', push: true})
     })
 
   })

@@ -20,14 +20,14 @@ your links.
 
 ## Install
 
-```sh
+```
 npm install --save unirouter redux
 ```
 
 Redux is the only hard peer dependency, but if you want to use the `<Link/>`
 component you'll need to install React as well:
 
-```sh
+```
 # Optional
 npm install --save react
 ```
@@ -77,6 +77,8 @@ middleware on the server.
 
 ## Use
 
+### Route State
+
 If the user were to come in with the url `/contacts/13/edit?details=true`, the
 following state would be available using whatever key you passed to the
 `combineReducers()` call mentioned above:
@@ -87,6 +89,8 @@ following state would be available using whatever key you passed to the
 
 Use this in your top level component to determine which components should be
 rendered based on the current route information.
+
+### Link Component
 
 To link directly to a route name, use the included `<Link/>` React component:
 
@@ -103,6 +107,57 @@ export class MyComponent extends Component {
 }
 ```
 
+When the user clicks on the link a NAVIGATE event will be fired, and the user's
+url will be updated to `/contacts/13/edit?details=true` because that's what
+uniloc generated from the name and options.
+
+## API Reference
+
+### `init(store, [routes], [aliases])`
+
+```js
+import init from 'unirouter/init'
+```
+
+Initializes the router, fires an initial `NAVIGATE` event, and attaches a
+popstate event handler.
+
+#### Arguments
+
+* `store` \(*Object*): The Redux store object, just as is passed to `<Provider>`
+  with `react-redux`.
+
+* [`routes`] \(*Object*): The [uniloc][uniloc] routes object, passed to the
+  `uniloc()` function documented [here][uniloc-api].
+
+* [`aliases`] \(*Object*): The [uniloc][uniloc] aliases object, passed to the
+  `uniloc()` function documented [here][uniloc-api].
+
+### `navigate({url, [source], [push = false], [replace = false]})`
+
+```js
+import {navigate} from 'unirouter/actions'
+```
+
+Fires a navigate event, which updates the route information in the state. It
+also optionally pushes a history entry using pushState, or replaces the current
+one using replaceState.
+
+#### Payload
+
+The payload can have the following properties:
+
+* `url` \(*String*): The url (including the querystring) to navigate to.
+
+* [`source`] \(*String*): The source of the event. Currently not used by the
+  reducer, but may be in the future.
+
+* [`push`] \(*Boolean*): Whether the browser url should be updated with
+  pushState, adding a new history entry for the user.
+
+* [`replace`] \(*Boolean*): Whether the browser url should be updated silently
+  with replaceState, which doesn't add a new history entry.
+
 [downloads-image]: https://img.shields.io/npm/dm/unirouter.svg?style=flat-square
 [downloads-url]: http://npm-stat.com/charts.html?package=unirouter
 [guilherme]: https://github.com/Agamennon
@@ -116,4 +171,5 @@ export class MyComponent extends Component {
 [travis-svg]: https://img.shields.io/travis/bkonkle/unirouter/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/bkonkle/unirouter
 [uniloc]: http://unicornstandard.com/packages/uniloc.html
+[uniloc-api]: https://github.com/unicorn-standard/uniloc#api
 [version-svg]: https://img.shields.io/npm/v/unirouter.svg?style=flat-square
