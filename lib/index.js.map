@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/index.js"],"names":[],"mappings":";;;;;AAAO,IAAM,WAAW,WAAX,WAAW,GAAG,aAAa,CAAA;AACjC,IAAM,WAAW,WAAX,WAAW,GAAG,aAAa,CAAA;AACjC,IAAM,QAAQ,WAAR,QAAQ,GAAG,UAAU,CAAA","file":"index.js","sourcesContent":["export const INIT_ROUTER = 'INIT_ROUTER'\nexport const URL_CHANGED = 'URL_CHANGED'\nexport const NAVIGATE = 'NAVIGATE'\n"]}
+{"version":3,"sources":["../src/index.js"],"names":[],"mappings":";;;AAAO,IAAM,QAAQ,WAAR,QAAQ,GAAG,UAAU,CAAA","file":"index.js","sourcesContent":["export const NAVIGATE = 'NAVIGATE'\n"]}
