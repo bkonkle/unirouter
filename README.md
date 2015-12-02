@@ -115,12 +115,14 @@ uniloc generated from the name and options.
 
 ### `init(store, [routes], [aliases])`
 
+Initializes the router, fires an initial `NAVIGATE` event, and attaches a
+popstate event handler.
+
+To import:
+
 ```js
 import init from 'unirouter/init'
 ```
-
-Initializes the router, fires an initial `NAVIGATE` event, and attaches a
-popstate event handler.
 
 #### Arguments
 
@@ -135,13 +137,15 @@ popstate event handler.
 
 ### `navigate({url, [source], [push = false], [replace = false]})`
 
-```js
-import {navigate} from 'unirouter/actions'
-```
-
 Fires a navigate event, which updates the route information in the state. It
 also optionally pushes a history entry using pushState, or replaces the current
 one using replaceState.
+
+To import:
+
+```js
+import {navigate} from 'unirouter/actions'
+```
 
 #### Payload
 
@@ -160,12 +164,14 @@ The payload can have the following properties:
 
 ### `configureRouter([routes], [aliases])`
 
+Replaces the current singleton `uniloc` instance with a new one using the given
+routes and aliases.
+
+To import:
+
 ```js
 import {configureRouter} from 'unirouter/router'
 ```
-
-Replaces the current singleton `uniloc` instance with a new one using the given
-routes and aliases.
 
 #### Arguments
 
@@ -177,11 +183,13 @@ routes and aliases.
 
 ### `<Link/>`
 
+A React component to provide links that will initiate navigation when clicked.
+
+To import:
+
 ```js
 import Link from 'unirouter/components/link'
 ```
-
-A React component to provide links that will initiate navigation when clicked.
 
 #### Props
 
