@@ -20,14 +20,14 @@ your links.
 
 ## Install
 
-```
+```sh
 npm install --save unirouter redux
 ```
 
 Redux is the only hard peer dependency, but if you want to use the `<Link/>`
 component you'll need to install React as well:
 
-```
+```sh
 # Optional
 npm install --save react
 ```
