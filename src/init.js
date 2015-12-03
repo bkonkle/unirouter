@@ -12,6 +12,6 @@ export default function init(store, routes, aliases) {
 
   configureRouter(routes, aliases)
 
-  store.dispatch(navigate({url, push: true, source: 'init'}))
+  store.dispatch(navigate({url, source: 'init'}))
   window.onpopstate = handlePopState(store)
 }
