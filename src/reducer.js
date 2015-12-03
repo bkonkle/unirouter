@@ -1,6 +1,6 @@
 import {handleActions} from 'redux-actions'
-import {NAVIGATE} from '../src/index'
-import getRouter from '../src/router'
+import {NAVIGATE} from './constants'
+import getRouter from './router'
 
 export function routeState(url) {
   return {route: getRouter().lookup(url), url}

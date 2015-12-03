@@ -1,6 +1,5 @@
-export const NAVIGATE = 'NAVIGATE'
-
-export init from './init'
 export {navigate} from './actions'
-export reducer from './reducer'
+export {NAVIGATE} from './constants'
+export init from './init'
 export Link from './components/link'
+export reducer from './reducer'
