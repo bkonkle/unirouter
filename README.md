@@ -5,7 +5,7 @@
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
 
-A minimal and (soon to be) universal routing engine using [redux][redux],
+A minimal and universal routing engine using [redux][redux],
 [uniloc][uniloc], and the HTML5 history api. Inspired by
 [@james_k_nelson][james-k-nelson]'s
 [Simple Routing with Redux and React][redux-routing] and
@@ -84,7 +84,10 @@ following state would be available using whatever key you passed to the
 `combineReducers()` call mentioned above:
 
 ```js
-{name: 'editContact', options: {id: 13, details: true}}
+{
+  url: '/contacts/13/edit?details=true',
+  route: {name: 'editContact', options: {id: 13, details: true},
+}
 ```
 
 Use this in your top level component to determine which components should be
@@ -177,6 +180,12 @@ A React component to provide links that will initiate navigation when clicked.
 
 * [`options`] \(*Object*): The `uniloc` route options, which are passed to the
   `generate()` function documented [here][uniloc-api].
+
+## License
+
+The MIT License (MIT)
+
+Copyright (c) 2015 Brainspace Corporation
 
 [downloads-image]: https://img.shields.io/npm/dm/unirouter.svg?style=flat-square
 [downloads-url]: http://npm-stat.com/charts.html?package=unirouter

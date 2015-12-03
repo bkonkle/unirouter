@@ -4,10 +4,11 @@
   "description": "A minimal routing system built with uniloc and redux",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha --require babel-register test/**/*.{js,jsx}",
+    "test": "istanbul test _mocha -- --require babel-register test/**/*.{js,jsx}",
     "build": "babel src -s -d lib",
     "watch": "babel src -s -d lib -w",
-    "prepublish": "npm run build"
+    "bundle": "babel-node node_modules/.bin/webpack --display-modules",
+    "prepublish": "npm run build && npm run bundle"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
   "devDependencies": {
     "babel-cli": "^6.2.0",
     "babel-eslint": "^4.1.5",
+    "babel-loader": "^6.2.0",
     "babel-plugin-transform-class-properties": "^6.2.2",
     "babel-plugin-transform-export-extensions": "^6.1.18",
     "babel-plugin-transform-object-rest-spread": "^6.1.18",
@@ -48,6 +50,7 @@
     "mocha": "^2.3.3",
     "proxyquire": "^1.7.3",
     "sinon": "^1.17.2",
-    "sinon-chai": "^2.8.0"
+    "sinon-chai": "^2.8.0",
+    "webpack": "^1.12.9"
   }
 }

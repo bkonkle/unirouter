@@ -96,6 +96,17 @@ describe('init', () => {
       expect(window).to.have.property('onpopstate').and.be.a('function')
     })
 
+    it('works universally when no window is present', () => {
+      const origWindow = global.window
+      delete global.window
+
+      init.default(store, routes, aliases)
+
+      expect(configureSpy).to.have.been.calledWith(routes, aliases)
+
+      global.window = origWindow
+    })
+
   })
 
 })
