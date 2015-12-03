@@ -82,7 +82,6 @@ describe('init', () => {
         payload: {
           url: '/space/unicorn?lasers=marshmallow',
           source: 'init',
-          push: true,
         },
         type: 'NAVIGATE',
       }
