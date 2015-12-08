@@ -105,7 +105,7 @@ export class MyComponent extends Component {
     return (
       <div>
         <h1>Edit Your Contacts</h1>
-        <Link href="#edit-contacts" name="editContacts" options={{id: 13, details: true}}/>
+        <Link name="editContacts" options={{id: 13, details: true}}/>
       </div>
     )
   }
@@ -167,16 +167,16 @@ Unirouter's reducer, which needs to be combined with the rest of your reducers.
 
 ### Link: React.Component
 
-`<Link href={string} name={string} options={object} [...]/>`
+`<Link name={string} [href={string}] [options={object}] [...]/>`
 
 A React component to provide links that will initiate navigation when clicked.
 
 #### Props
 
-* `href` \(*String*): The href to use for the `<a>` element.
-
 * `name` \(*String*): The `uniloc` route name, which is passed to the
   `generate()` function documented [here][uniloc-api].
+
+* [`href`] \(*String*): The href to use for the `<a>` element. Defaults to the generated url.
 
 * [`options`] \(*Object*): The `uniloc` route options, which are passed to the
   `generate()` function documented [here][uniloc-api].
