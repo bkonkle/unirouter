@@ -11,11 +11,22 @@ chai.use(sinonChai)
 
 describe('<Link/>', () => {
 
+  before(() => {
+    configureRouter({
+      'doctor-who': 'GET /the-doctor',
+      'sonic-screwdriver': 'GET /sonic/screwdriver',
+    })
+  })
+
+  after(() => {
+    configureRouter()
+  })
+
   describe('render()', () => {
 
     it('renders a link using whatever props are passed to it', () => {
       const context = {
-        props: {href: '/gallifrey', the: 'doctor', children: 'Sonic Screwdriver'},
+        props: {href: '/gallifrey', name: 'doctor-who', the: 'doctor', children: 'Sonic Screwdriver'},
         handleClick: () => null,
       }
       const expected = (
@@ -29,25 +40,29 @@ describe('<Link/>', () => {
       expect(result).to.deep.equal(expected)
     })
 
+    it('uses the url as the href when no href is provided', () => {
+      const context = {
+        props: {name: 'sonic-screwdriver'},
+        handleClick: () => null,
+      }
+      const expected = (
+        <a href="/sonic/screwdriver" onClick={() => null}/>
+      )
+
+      const result = Link.prototype.render.call(context)
+
+      expect(result).to.deep.equal(expected)
+    })
+
   })
 
   describe('handleClick()', () => {
 
-    before(() => {
-      configureRouter({'sonic-screwdriver': 'GET /sonic/screwdriver'})
-    })
-
-    after(() => {
-      configureRouter()
-    })
-
-    it('navigates to the given route name on click', () => {
+    it('navigates to the given url on click', () => {
       const event = {preventDefault: sinon.spy()}
-      const context = {
-        props: {name: 'sonic-screwdriver', navigate: sinon.spy()},
-      }
+      const context = {props: {navigate: sinon.spy()}}
 
-      Link.prototype.handleClick.call(context, event)
+      Link.prototype.handleClick.call(context, event, '/sonic/screwdriver')
 
       expect(event.preventDefault).to.have.been.called
       expect(context.props.navigate).to.have.been.calledWith({url: '/sonic/screwdriver', push: true})

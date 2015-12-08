@@ -7,22 +7,23 @@ export class Link extends React.Component {
 
   static propTypes = {
     children: PropTypes.node,
-    href: PropTypes.string.isRequired,
+    href: PropTypes.string,
     name: PropTypes.string.isRequired,
     navigate: PropTypes.func.isRequired,
     options: PropTypes.object,
   }
 
-  handleClick(event) {
+  handleClick(event, url) {
     event.preventDefault()
-    const url = getRouter().generate(this.props.name, this.props.options)
     this.props.navigate({url, push: true})
   }
 
   render() {
     const {href, name, options, ...rest} = this.props
+    const url = getRouter().generate(name, options)
+
     return (
-      <a href={href} onClick={this.handleClick} {...rest}>
+      <a href={href || url} onClick={(event) => this.handleClick(event, url)} {...rest}>
         {this.props.children}
       </a>
     )
