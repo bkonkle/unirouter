@@ -1,10 +1,6 @@
 import * as actions from '../src/actions'
-import chai, {expect} from 'chai'
+import {expect} from 'chai'
 import reducer, {routeState} from '../src/reducer'
-import sinon from 'sinon'
-import sinonChai from 'sinon-chai'
-
-chai.use(sinonChai)
 
 describe('reducer', () => {
 
@@ -41,22 +37,6 @@ describe('reducer', () => {
 
   describe('NAVIGATE', () => {
 
-    before(() => {
-      global.history = {
-        pushState: sinon.spy(),
-        replaceState: sinon.spy(),
-      }
-    })
-
-    afterEach(() => {
-      global.history.pushState.reset()
-      global.history.replaceState.reset()
-    })
-
-    after(() => {
-      delete global.history
-    })
-
     it('handles navigate events', () => {
       const action = actions.navigate({
         url: '/my/awesome/url?awesome=true',
@@ -67,41 +47,6 @@ describe('reducer', () => {
       const result = reducer({}, action)
 
       expect(result).to.deep.equal(expected)
-    })
-
-    it('creates a new history entry with pushState if push is true', () => {
-      const action = actions.navigate({
-        url: '/into/the/tardis',
-        source: 'test',
-        push: true,
-      })
-
-      reducer({}, action)
-
-      expect(global.history.pushState).to.have.been.calledWith({}, null, '/into/the/tardis')
-      expect(global.history.replaceState).to.not.have.been.called
-    })
-
-    it('uses replaceState if replace is true', () => {
-      const action = actions.navigate({
-        url: '/into/the/tardis',
-        source: 'test',
-        replace: true,
-      })
-
-      reducer({}, action)
-
-      expect(global.history.pushState).to.not.have.been.called
-      expect(global.history.replaceState).to.have.been.calledWith({}, null, '/into/the/tardis')
-    })
-
-    it('doesn\'t create a new history entry if the user is already on that location', () => {
-      const action = actions.navigate({url: '/space/unicorn?lasers=marshmallow'})
-
-      reducer({}, action)
-
-      expect(global.history.pushState).to.not.have.been.called
-      expect(global.history.replaceState).to.not.have.been.called
     })
 
   })
