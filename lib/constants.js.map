@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/constants.js"],"names":[],"mappings":";;;AAAO,IAAM,QAAQ,WAAR,QAAQ,GAAG,UAAU,CAAA","file":"constants.js","sourcesContent":["export const NAVIGATE = 'NAVIGATE'\n"]}
+{"version":3,"sources":["../src/constants.js"],"names":[],"mappings":";;;AAAO,IAAM,8BAAW,UAAX","file":"constants.js","sourcesContent":["export const NAVIGATE = 'NAVIGATE'\n"]}
