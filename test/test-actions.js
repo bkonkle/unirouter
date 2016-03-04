@@ -64,6 +64,21 @@ describe('actions', () => {
       expect(global.history.replaceState).to.not.have.been.called
     })
 
+    it('uses neither replaceState nor pushState if the source is popState', () => {
+      navigate({
+        url: '/into/the/tardis',
+        source: 'popState',
+        replace: true,
+      })
+
+      navigate({
+        url: '/into/the/tardis',
+        source: 'popState',
+        push: true,
+      })
+      expect(global.history.pushState).to.not.have.been.called
+      expect(global.history.replaceState).to.not.have.been.called
+    })
   })
 
 })
