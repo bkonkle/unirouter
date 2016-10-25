@@ -3,7 +3,6 @@ import {expect} from 'chai'
 import reducer, {routeState} from '../src/reducer'
 
 describe('reducer', () => {
-
   before(() => {
     global.window = {
       location: {
@@ -18,7 +17,6 @@ describe('reducer', () => {
   })
 
   describe('routeState()', () => {
-
     it('packages the route details up for the state', () => {
       const expected = {
         route: {
@@ -32,11 +30,9 @@ describe('reducer', () => {
 
       expect(result).to.deep.equal(expected)
     })
-
   })
 
   describe('NAVIGATE', () => {
-
     it('handles navigate events', () => {
       const action = actions.navigate({
         url: '/my/awesome/url?awesome=true',
@@ -48,7 +44,5 @@ describe('reducer', () => {
 
       expect(result).to.deep.equal(expected)
     })
-
   })
-
 })

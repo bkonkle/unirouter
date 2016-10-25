@@ -7,9 +7,7 @@ import sinonChai from 'sinon-chai'
 chai.use(sinonChai)
 
 describe('actions', () => {
-
   describe('navigate()', () => {
-
     before(() => {
       global.history = {
         pushState: sinon.spy(),
@@ -80,5 +78,4 @@ describe('actions', () => {
       expect(global.history.replaceState).to.not.have.been.called
     })
   })
-
 })

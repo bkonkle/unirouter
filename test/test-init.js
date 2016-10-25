@@ -12,7 +12,6 @@ const init = proxyquire('../src/init', {
 chai.use(sinonChai)
 
 describe('init', () => {
-
   before(() => {
     global.window = {
       location: {
@@ -48,11 +47,9 @@ describe('init', () => {
 
       expect(store.dispatch).to.have.been.calledWith(expected)
     })
-
   })
 
   describe('init()', () => {
-
     const state = {router: {}}
     const store = {dispatch: sinon.spy(), getState: () => state}
 
@@ -106,7 +103,5 @@ describe('init', () => {
 
       global.window = origWindow
     })
-
   })
-
 })

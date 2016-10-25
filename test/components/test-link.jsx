@@ -10,7 +10,6 @@ chai.use(jsxChai)
 chai.use(sinonChai)
 
 describe('<Link/>', () => {
-
   before(() => {
     configureRouter({
       'doctor-who': 'GET /the-doctor',
@@ -23,7 +22,6 @@ describe('<Link/>', () => {
   })
 
   describe('render()', () => {
-
     it('renders a link using whatever props are passed to it', () => {
       const context = {
         props: {href: '/gallifrey', name: 'doctor-who', the: 'doctor', children: 'Sonic Screwdriver'},
@@ -46,18 +44,16 @@ describe('<Link/>', () => {
         handleClick: () => null,
       }
       const expected = (
-        <a href="/sonic/screwdriver" onClick={() => null}/>
+        <a href="/sonic/screwdriver" onClick={() => null} />
       )
 
       const result = Link.prototype.render.call(context)
 
       expect(result).to.deep.equal(expected)
     })
-
   })
 
   describe('handleClick()', () => {
-
     it('navigates to the given url on click', () => {
       const event = {preventDefault: sinon.spy()}
       const context = {props: {navigate: sinon.spy()}}
@@ -67,7 +63,5 @@ describe('<Link/>', () => {
       expect(event.preventDefault).to.have.been.called
       expect(context.props.navigate).to.have.been.calledWith({url: '/sonic/screwdriver', push: true})
     })
-
   })
-
 })

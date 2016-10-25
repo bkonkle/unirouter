@@ -1,4 +1,4 @@
-export function getUrl(store) {
+export function getUrl (store) {
   if (typeof window !== 'undefined' && window.location) {
     return window.location.pathname + window.location.search
   }

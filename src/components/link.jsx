@@ -13,12 +13,12 @@ export class Link extends React.Component {
     options: PropTypes.object,
   }
 
-  handleClick(event, url) {
+  handleClick (event, url) {
     event.preventDefault()
     this.props.navigate({url, push: true})
   }
 
-  render() {
+  render () {
     const {href, name, options, ...rest} = this.props
     const url = getRouter().generate(name, options)
 

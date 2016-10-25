@@ -2,9 +2,7 @@ import {getUrl} from '../src/utils'
 import {expect} from 'chai'
 
 describe('utils', () => {
-
   describe('getUrl()', () => {
-
     it('pulls the url from window.location', () => {
       global.window = {
         location: {
@@ -29,7 +27,5 @@ describe('utils', () => {
 
       expect(result).to.equal('/space/unicorn?rainbows=delivered')
     })
-
   })
-
 })

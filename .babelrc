@@ -1,8 +1,15 @@
 {
-  "presets": ["es2015-loose", "react"],
+  "presets": [["es2015", {"loose": true}], "react"],
   "plugins": [
+    "add-module-exports",
+    "transform-export-extensions",
     "transform-class-properties",
     "transform-object-rest-spread",
-    "transform-export-extensions"
-  ]
+    "transform-async-to-generator"
+  ],
+  "env": {
+    "production": {
+      "presets": ["react-optimize"]
+    }
+  }
 }

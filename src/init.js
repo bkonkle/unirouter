@@ -7,7 +7,7 @@ export const handlePopState = store => () => {
   store.dispatch(navigate({url, push: true, source: 'popState'}))
 }
 
-export default function init(store, routes, aliases) {
+export default function init (store, routes, aliases) {
   const url = getUrl(store)
 
   configureRouter(routes, aliases)

@@ -7,7 +7,7 @@ const initialState = {
   route: null,
 }
 
-export function routeState(url) {
+export function routeState (url) {
   return {route: getRouter().lookup(url), url}
 }
 

@@ -1,1 +1,16 @@
-{"extends": "ecliptic"}
+{
+  "extends": ["standard", "standard-react"],
+  "parser": "babel-eslint",
+  "rules": {
+    "jsx-quotes": ["error", "prefer-double"],
+    "comma-dangle": ["error", "always-multiline"],
+    "no-duplicate-imports": "off",
+    "react/prop-types": "off"
+  },
+  "env": {
+    "mocha": true,
+  },
+  "globals": {
+    "__PREFIX_LINKS__": true
+  }
+}

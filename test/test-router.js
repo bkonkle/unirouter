@@ -12,13 +12,11 @@ const router = proxyquire('../src/router', {
 })
 
 describe('router', () => {
-
   afterEach(() => {
     unilocSpy.reset()
   })
 
   describe('configureRouter()', () => {
-
     it('refreshes the router instance with new routes and aliases', () => {
       const routes = []
       const aliases = {}
@@ -27,7 +25,5 @@ describe('router', () => {
 
       expect(unilocSpy).to.have.been.calledWith(routes, aliases)
     })
-
   })
-
 })
