@@ -1,6 +1,6 @@
 {
   "name": "unirouter",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "A minimal routing system built with uniloc and redux",
   "main": "lib/index.js",
   "scripts": {
