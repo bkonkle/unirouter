@@ -1,4 +1,4 @@
-# unirouter
+# [DEPRECATED] unirouter
 
 [![Version][version-svg]][package-url]
 [![Build Status][travis-svg]][travis-url]
